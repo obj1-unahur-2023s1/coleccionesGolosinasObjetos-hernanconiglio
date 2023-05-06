@@ -1,6 +1,34 @@
+import golosinas.*
 
-test "testX" {
+describe "test sobre chocolatin" {
+	const indiceInflacion = 1.1
+	
+	method initialize() {
+		chocolatin.setPesoInicial(100)
+	}
+	test "el chocolatin con pesoinicial de 100 vale 50 " {
+		assert.equals(55,chocolatin.precio()*indiceInflacion)
+	}
+	test "le doy un mordisco y pesara 98" {
+		chocolatin.mordisco()
+		assert.equals(98,chocolatin.peso())
+	}
+}
 
-	assert.that(true)
-
+describe "test sobre tuttifrutti" {
+	
+	method initialize() {
+		tuttifrutti.mordisco()
+		tuttifrutti.mordisco()
+	}
+	test "al morder 2 veces el sabor es naranja" {
+		assert.that(tuttifrutti.gusto()=="naranja")
+		assert.equals("naranja",tuttifrutti.gusto())
+	}
+	test "al darle 2 mordiscos mas el sabor debería ser frutilla" {
+		tuttifrutti.mordisco()
+		tuttifrutti.mordisco()
+		assert.equals("frutilla",tuttifrutti.gusto())
+	}
+	
 }
